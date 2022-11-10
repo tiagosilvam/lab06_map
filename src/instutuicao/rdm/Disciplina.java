@@ -49,7 +49,7 @@ public class Disciplina {
             turmas.add(turma);
             return turma;
         }
-        throw new Exception("1");
+        throw new Exception("Não é possível adicionar turmas no mesmo horário e sala.");
     }
 
     @Override

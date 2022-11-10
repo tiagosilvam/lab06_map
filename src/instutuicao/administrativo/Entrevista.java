@@ -8,7 +8,7 @@ public class Entrevista {
 
     private ArrayList<Pessoa> pessoas;
 
-    public Entrevista(ArrayList<Pessoa> pessoas) {
+    public Entrevista() {
         setPessoas(new ArrayList<>());
     }
 

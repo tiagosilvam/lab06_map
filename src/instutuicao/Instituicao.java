@@ -1,17 +1,22 @@
 package instutuicao;
 
+import instutuicao.administrativo.Reuniao;
 import instutuicao.pessoa.diretor.Diretor;
 import instutuicao.sistema.Sistema;
+
+import java.util.ArrayList;
 
 public class Instituicao {
 
     private String nome;
     private Sistema sistema;
     private Diretor diretor;
+    private ArrayList<Reuniao> reunioes;
 
     public Instituicao(String nome) {
         setNome(nome);
         setSistema(new Sistema());
+        setReunioes(new ArrayList<>());
     }
 
     public String getNome() {
@@ -36,6 +41,20 @@ public class Instituicao {
 
     public void setDiretor(String nome) {
         this.diretor = new Diretor(nome);
+    }
+
+    public ArrayList<Reuniao> getReunioes() {
+        return reunioes;
+    }
+
+    public void setReunioes(ArrayList<Reuniao> reunioes) {
+        this.reunioes = reunioes;
+    }
+
+    public Reuniao criarReuniao() {
+        Reuniao reuniao = new Reuniao();
+        reunioes.add(reuniao);
+        return reuniao;
     }
 
     @Override

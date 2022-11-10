@@ -2,7 +2,6 @@ import instutuicao.Instituicao;
 import instutuicao.pessoa.aluno.Aluno;
 import instutuicao.rdm.Disciplina;
 import instutuicao.pessoa.funcionario.Professor;
-import instutuicao.sistema.Sistema;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -14,7 +13,7 @@ public class Main {
         Aluno aluno1 = uepb.getSistema().getRdm().addAluno("Tiago");
         Aluno aluno2 = uepb.getSistema().getRdm().addAluno("João");
         Aluno aluno3 = uepb.getSistema().getRdm().addAluno("Maria");
-        
+
         Professor professor1 = uepb.getSistema().getRdm().addProfessor("Vanessa", 3800);
         Professor professor2 = uepb.getSistema().getRdm().addProfessor("Augusto", 9000);
         Disciplina disciplina1 = uepb.getSistema().getRdm().addDisciplina("Métodos Avançados de Programação");
@@ -34,6 +33,10 @@ public class Main {
 
         // Demais opções
         System.out.println("========== Outros ==========");
+
         uepb.getSistema().getFinanceiro().getFolhaPagamento().gerar();
+
+        uepb.criarReuniao();
+        uepb.getReunioes().forEach(System.out::println);
     }
 }
