@@ -12,6 +12,9 @@ public class Main {
         uepb.setDiretor("Mário");
 
         Aluno aluno1 = uepb.getSistema().getRdm().addAluno("Tiago");
+        Aluno aluno2 = uepb.getSistema().getRdm().addAluno("João");
+        Aluno aluno3 = uepb.getSistema().getRdm().addAluno("Maria");
+        
         Professor professor1 = uepb.getSistema().getRdm().addProfessor("Vanessa", 3800);
         Professor professor2 = uepb.getSistema().getRdm().addProfessor("Augusto", 9000);
         Disciplina disciplina1 = uepb.getSistema().getRdm().addDisciplina("Métodos Avançados de Programação");
