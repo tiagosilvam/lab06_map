@@ -1,7 +1,11 @@
 import instutuicao.Instituicao;
+import instutuicao.administrativo.Entrevista;
+import instutuicao.administrativo.Reuniao;
 import instutuicao.pessoa.aluno.Aluno;
+import instutuicao.pessoa.diretor.Diretor;
 import instutuicao.rdm.Disciplina;
 import instutuicao.pessoa.funcionario.Professor;
+import instutuicao.rdm.Turma;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -17,11 +21,22 @@ public class Main {
         Professor professor1 = uepb.getSistema().getRdm().addProfessor("Vanessa", 3800);
         Professor professor2 = uepb.getSistema().getRdm().addProfessor("Augusto", 9000);
         Disciplina disciplina1 = uepb.getSistema().getRdm().addDisciplina("Métodos Avançados de Programação");
+        Disciplina disciplina2 = uepb.getSistema().getRdm().addDisciplina("Cálculo Numérico");
+        Diretor diretor1 = uepb.setDiretor("Mário");
 
         // Alunos
         System.out.println("========== Alunos ==========");
         uepb.getSistema().getRdm().getAlunos().forEach(System.out::println);
-        disciplina1.addTurma("9h", "bf3");
+
+        // Turmas
+        System.out.println("========== Turmas ==========");
+        Turma turma1 = disciplina1.addTurma("9h", "A103");
+        Turma turma2 = disciplina2.addTurma("7h", "B207");
+        turma1.matricularAluno(aluno1);
+        turma1.matricularAluno(aluno2);
+        turma2.matricularAluno(aluno3);
+        disciplina1.getTurmas().forEach(System.out::println);
+        disciplina2.getTurmas().forEach(System.out::println);
 
         // Professores
         System.out.println("========== Professores ==========");
@@ -31,12 +46,23 @@ public class Main {
         System.out.println("========== Disciplinas ==========");
         uepb.getSistema().getRdm().getDisciplinas().forEach(System.out::println);
 
-        // Demais opções
-        System.out.println("========== Outros ==========");
-
+        // Folha de pagamento
+        System.out.println("========== Folha de pagamento ==========");
+        uepb.getSistema().getFinanceiro().getEstoque().addItem("Caneta", 1.0, 100);
+        uepb.getSistema().getFinanceiro().getEstoque().addItem("Papel", 100.0, 200);
         uepb.getSistema().getFinanceiro().getFolhaPagamento().gerar();
+        System.out.println(uepb.getSistema().getFinanceiro().getBalanco().calcular());
 
-        uepb.criarReuniao();
+        // Demais opções
+        System.out.println("========== Reuniões e Entrevistas ==========");
+        Reuniao reuniao1 = uepb.criarReuniao();
+        reuniao1.setTema("Criação de projeto");
+        reuniao1.addPessoa(aluno1);
+        reuniao1.addPessoa(professor1);
+        reuniao1.addPessoa(diretor1);
         uepb.getReunioes().forEach(System.out::println);
+        //
+        Entrevista entrevista = uepb.criarEntrevista(diretor1);
+        System.out.println(entrevista.toString());
     }
 }

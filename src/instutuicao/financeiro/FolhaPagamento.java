@@ -23,6 +23,6 @@ public class FolhaPagamento {
     public void gerar() {
         double salarios = getFuncionarios().stream().mapToDouble(Professor::getSalario).sum();
         getFuncionarios().forEach(System.out::println);
-        System.out.println("Total: R$" + salarios);
+        System.out.println("Total de salários: R$" + salarios);
     }
 }

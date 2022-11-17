@@ -3,6 +3,7 @@ package instutuicao.administrativo;
 import instutuicao.pessoa.Pessoa;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Reuniao {
 
@@ -33,5 +34,12 @@ public class Reuniao {
     public Pessoa addPessoa(Pessoa pessoa) {
         pessoas.add(pessoa);
         return pessoa;
+    }
+
+    @Override
+    public String toString() {
+        return "Reuniao: ↓" + System.lineSeparator() +
+                "Tema: " + getTema() + System.lineSeparator() +
+                "Pessoas: " + (!getPessoas().isEmpty() ? getPessoas().stream().map(Pessoa::getNome).collect(Collectors.joining(", ")) : "Nenhuma pessoa.");
     }
 }

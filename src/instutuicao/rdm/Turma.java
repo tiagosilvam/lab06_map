@@ -4,6 +4,7 @@ import instutuicao.pessoa.aluno.Aluno;
 import instutuicao.infraestrutura.Sala;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Turma {
 
@@ -51,6 +52,8 @@ public class Turma {
     @Override
     public String toString() {
         return "Horário: " + getHorario() + System.lineSeparator() +
-                "Sala: " + getSala();
+                "Sala: " + getSala() + System.lineSeparator() +
+                "Alunos: ↓" + System.lineSeparator() +
+                (!getAlunos().isEmpty() ? getAlunos().stream().map(Aluno::toString).collect(Collectors.joining("\n")) : "Nenhum aluno matriculado nesta turma.");
     }
 }

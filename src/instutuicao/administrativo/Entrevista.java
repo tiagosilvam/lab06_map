@@ -3,9 +3,11 @@ package instutuicao.administrativo;
 import instutuicao.pessoa.Pessoa;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Entrevista {
 
+    private Pessoa entrevistado;
     private ArrayList<Pessoa> pessoas;
 
     public Entrevista() {
@@ -23,5 +25,20 @@ public class Entrevista {
     public Pessoa addPessoa(Pessoa pessoa) {
         pessoas.add(pessoa);
         return pessoa;
+    }
+
+    public Pessoa getEntrevistado() {
+        return entrevistado;
+    }
+
+    public void setEntrevistado(Pessoa entrevistado) {
+        this.entrevistado = entrevistado;
+    }
+
+    @Override
+    public String toString() {
+        return "Entrevista: ↓" + System.lineSeparator() +
+                "Entrevistado: " + getEntrevistado().getNome() + System.lineSeparator() +
+                "Pessoas: " + (!getPessoas().isEmpty() ? getPessoas().stream().map(Pessoa::getNome).collect(Collectors.joining(", ")) : "Nenhuma pessoa.");
     }
 }

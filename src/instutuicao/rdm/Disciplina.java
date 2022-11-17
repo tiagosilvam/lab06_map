@@ -56,7 +56,7 @@ public class Disciplina {
     public String toString() {
         return "Nome da disciplina: " + getNome() + System.lineSeparator() +
                 "Professor: " + (getProfessor() != null ? getProfessor() : "Sem professor no momento.") + System.lineSeparator() +
-                "Turma(s): " + System.lineSeparator() +
+                "Turma(s): ↓" + System.lineSeparator() +
                 (getTurmas().size() != 0 ? getTurmas().stream().map(Turma::toString).collect(Collectors.joining("\n")) : "Nenhuma turma.");
     }
 }

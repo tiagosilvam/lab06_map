@@ -33,7 +33,7 @@ public class Balanco {
     public String calcular() {
         double gastoSalario = getFolhaPagamento().getFuncionarios().stream().mapToDouble(Professor::getSalario).sum();
         double gastoEstoque = estoque.getEstoque().stream().mapToDouble(Item::getPreco).sum();
-        return String.format("Despesas: R$ %.2f", gastoSalario + gastoEstoque);
+        return String.format("Despesas do estoque: R$ %.2f\nDespesas totais: R$ %.2f", gastoEstoque, gastoSalario + gastoEstoque);
     }
 
 }

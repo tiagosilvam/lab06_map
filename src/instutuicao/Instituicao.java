@@ -1,6 +1,8 @@
 package instutuicao;
 
+import instutuicao.administrativo.Entrevista;
 import instutuicao.administrativo.Reuniao;
+import instutuicao.pessoa.Pessoa;
 import instutuicao.pessoa.diretor.Diretor;
 import instutuicao.sistema.Sistema;
 
@@ -12,11 +14,13 @@ public class Instituicao {
     private Sistema sistema;
     private Diretor diretor;
     private ArrayList<Reuniao> reunioes;
+    private ArrayList<Entrevista> entrevistas;
 
     public Instituicao(String nome) {
         setNome(nome);
         setSistema(new Sistema());
         setReunioes(new ArrayList<>());
+        setEntrevistas(new ArrayList<>());
     }
 
     public String getNome() {
@@ -39,8 +43,10 @@ public class Instituicao {
         return diretor;
     }
 
-    public void setDiretor(String nome) {
-        this.diretor = new Diretor(nome);
+    public Diretor setDiretor(String nome) {
+        Diretor diretor = new Diretor(nome);
+        this.diretor = diretor;
+        return diretor;
     }
 
     public ArrayList<Reuniao> getReunioes() {
@@ -55,6 +61,21 @@ public class Instituicao {
         Reuniao reuniao = new Reuniao();
         reunioes.add(reuniao);
         return reuniao;
+    }
+
+    public Entrevista criarEntrevista(Pessoa entrevistado) {
+        Entrevista entrevista = new Entrevista();
+        entrevistas.add(entrevista);
+        entrevista.setEntrevistado(entrevistado);
+        return entrevista;
+    }
+
+    public ArrayList<Entrevista> getEntrevistas() {
+        return entrevistas;
+    }
+
+    public void setEntrevistas(ArrayList<Entrevista> entrevistas) {
+        this.entrevistas = entrevistas;
     }
 
     @Override
